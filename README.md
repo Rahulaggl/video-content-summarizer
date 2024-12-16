@@ -8,7 +8,7 @@ Here is the updated GitHub description with the link placed at the top:
    To run the project locally, follow the setup instructions below.
    
 3. **Online Access**:  
-   You can access the project online via the following [link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
+   You can access the project online via the following [link](https://video-content-summarizer-oyfpmfdnv28v4qf8jwhp2j.streamlit.app/).
 ## Demo Video
 
 Here is the demo video:[link](https://youtu.be/-olEfVXiUik).
