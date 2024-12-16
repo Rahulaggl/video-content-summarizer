@@ -1,106 +1,121 @@
-# video-content-summarizer
-A Streamlit-based tool that extracts video transcripts, generates concise summaries, suggests catchy captions, relevant hashtags for virality, and recommends famous people to tag based on video content using IBM Watsonx Mistral 7B.
-Description
+### **Video Content Summarizer for Social Media Optimization**  
 
-A Streamlit-based tool that extracts video transcripts, generates concise summaries, suggests catchy captions, relevant hashtags for virality, and recommends famous people to tag based on video content using IBM Watsonx Mistral 7B.
-About the Project
+This repository implements a **Video Content Summarizer** that analyzes YouTube video content, extracts key insights, and generates optimized outputs for social media engagement. The system leverages AI-powered models to provide captions, hashtags, and tagging recommendations for increasing video virality and audience reach.  
 
-This project helps content creators automate video transcript summarization, social media optimization, and audience engagement. Leveraging YouTube Transcripts and the power of IBM Watsonx AI, this app:
+---
 
-    Extracts YouTube video transcripts.
-    Summarizes video content into readable narratives.
-    Suggests engaging captions for social media.
-    Provides viral hashtags for content reach.
-    Recommends famous personalities to tag based on the video’s field/topic.
+### **Features**  
 
-Tech Stack
+1. **YouTube Transcript Extraction**  
+   - Extracts video transcripts using the YouTube Transcript API for further analysis.  
 
-    Python
-    Streamlit
-    IBM Watsonx AI
-    YouTube Transcript API
-    Pysbd (Sentence Segmentation)
+2. **Video Summarization**  
+   - Generates a concise summary of video content, enabling quick comprehension of the core message.  
 
-Features
+3. **Caption Generator**  
+   - Creates engaging and personalized captions for social media platforms.  
 
-    YouTube Video Processing: Extracts and summarizes transcripts.
-    Caption Generator: Suggests catchy captions for videos.
-    Hashtag Recommendations:
-        Viral hashtags for content engagement.
-        Personalized tags featuring notable people related to the content field.
-    User-Friendly Interface: Easy-to-use Streamlit interface for quick execution.
+4. **Hashtag Recommendations**  
+   - Generates two types of hashtags:  
+     - **Viral Hashtags**: Optimized for audience engagement.  
+     - **Field-Specific Tags**: Suggestions of relevant famous personalities or influencers to tag based on video content.  
 
-Instructions to Work on the Project
-Prerequisites
+5. **Streamlit User Interface**  
+   - Provides an easy-to-use interface for uploading video URLs and receiving outputs.  
 
-    Install Python 3.8+ on your system.
-    Set up an IBM Watsonx AI account and retrieve your API Key and Project ID:
-        IBM Watsonx AI Documentation.
-    Create a YouTube API Transcript-enabled account.
+---
 
-Step-by-Step Guide
+### **Workflow**  
 
-    Clone the Repository
+1. **Input Video URL**:  
+   - Paste the YouTube video link into the application.  
 
-git clone https://github.com/<your-username>/video-content-summarizer.git  
-cd video-content-summarizer  
+2. **Transcript Extraction**:  
+   - Automatically fetches the transcript of the video.  
 
-Set Up the Environment
+3. **Content Processing**:  
+   - Summarizes the transcript into clear insights.  
+   - Generates suggested captions and optimized hashtags.  
 
-    Create a virtual environment and install dependencies.
+4. **Tagging Recommendations**:  
+   - Identifies famous personalities or relevant figures related to the video topic for tagging.  
 
-    python -m venv env  
-    source env/bin/activate  # On Windows: env\Scripts\activate  
-    pip install -r requirements.txt  
+5. **Output**:  
+   - Summarized transcript.  
+   - Suggested captions.  
+   - Viral hashtags and famous people to tag.  
 
-Add API Keys
+---
 
-    Create a .env file in the project root and add your credentials:
+### **Sample Outputs**  
 
-    WATSONX_API_KEY=your_watsonx_api_key  
-    PROJECT_ID=your_ibm_project_id  
+- **Caption**:  
+  "Unlock your potential with AI-powered insights! 🚀 #ArtificialIntelligence #GrowthMindset"  
 
-Run the Application
+- **Viral Hashtags**:  
+  `#Trending #ViralVideo #AI #ContentCreator #Inspiration`  
 
-    Start the Streamlit app:
+- **Famous Personalities to Tag**:  
+   - In Tech: Elon Musk, Sundar Pichai, Satya Nadella  
+   - In Fitness: Chris Hemsworth, Michelle Lewin  
 
-        streamlit run app.py  
+---
 
-    Upload Your Video to YouTube
-        Make your video Private.
-        Share the YouTube link and paste it into the application to generate outputs.
+### **Setup Instructions**  
 
-    Generate Recommendations
-        Paste the YouTube URL.
-        View the outputs for:
-            Catchy Captions
-            Viral Hashtags
-            Famous Personalities to Tag
-        Full video transcript summary is available for further edits.
+To run the project locally:  
 
-How It Works
+1. **Clone the Repository**  
+   ```bash  
+   git clone https://github.com/<your-username>/video-content-summarizer.git  
+   cd video-content-summarizer  
+   ```  
 
-    Input: Paste a YouTube video URL.
-    Transcript Extraction: Extracts video subtitles using YouTube Transcript API.
-    Summarization: Uses Pysbd for text segmentation and splits content for processing.
-    Content Generation:
-        IBM Watsonx AI generates captions, hashtags, and tags relevant to the content field.
-    Output: Displays results in a clean and organized format.
+2. **Install Dependencies**  
+   Install required Python libraries:  
+   ```bash  
+   pip install -r requirements.txt  
+   ```  
 
-Demo
+3. **Add API Keys**  
+   Create a `.env` file and add the required keys:  
+   ```plaintext  
+   WATSONX_API_KEY=your_ibm_watsonx_api_key  
+   PROJECT_ID=your_project_id  
+   ```  
 
-    Sample outputs will include:
-        Video Summary
-        Suggested Captions
-        Viral Hashtags
-        Recommended Famous Personalities
+4. **Run the Application**  
+   Start the Streamlit interface:  
+   ```bash  
+   streamlit run app.py  
+   ```  
 
-Contributions
+5. **Input the Video URL**  
+   Paste the YouTube video link and let the system generate optimized outputs.  
 
-Contributions are welcome! Feel free to fork the repository and submit pull requests.
-To Contribute:
+---
 
-    Fork the repository.
-    Make your changes in a feature branch.
-    Submit a pull request with proper documentation.
+### **Project Structure**  
+
+- `app.py`: Streamlit app for user interaction.  
+- `transcript_extraction.py`: Fetches YouTube video transcripts.  
+- `summary_generation.py`: Generates video summaries and key insights.  
+- `hashtag_suggester.py`: Generates viral hashtags and tagging recommendations.  
+- `requirements.txt`: Lists project dependencies.  
+
+---
+
+### **Technologies Used**  
+
+- **Streamlit**: Interactive User Interface.  
+- **YouTube Transcript API**: For extracting video transcripts.  
+- **IBM Watsonx AI**: To generate summaries, captions, and recommendations.  
+- **Python Libraries**: Pysbd, Pandas, and Requests for text processing.  
+
+---
+
+### **Future Enhancements**  
+- Integration with social media platforms for auto-posting.  
+- Support for other video platforms (e.g., Vimeo).  
+- Enhanced AI models for caption personalization.  
 
