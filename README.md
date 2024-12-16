@@ -11,12 +11,8 @@ Here is the updated GitHub description with the link placed at the top:
    You can access the project online via the following [link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
 ## Demo
 
-Here is the demo video:
+Here is the demo video:[link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
 
-<video width="600" controls>
-  <source src="https://youtu.be/-olEfVXiUik">
-  Your browser does not support the video tag.
-</video>
 
 
 
