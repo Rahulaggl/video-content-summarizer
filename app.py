@@ -10,6 +10,7 @@ from ibm_watsonx_ai.foundation_models import ModelInference
 
 dotenv.load_dotenv()
 
+# Watsonx AI configuration
 def configure_watsonx():
     credentials = {
         "url": "https://us-south.ml.cloud.ibm.com",
@@ -29,32 +30,31 @@ def configure_watsonx():
         params=parameters, 
         credentials=credentials,
         project_id=project_id)
-    
     return model
 
 seg = pysbd.Segmenter(language='en', clean=True)
 
+# Extract video ID
 def extract_youtube_video_id(url: str) -> str:
     found = re.search(r"(?:youtu\.be\/|watch\?v=)([\w-]+)", url)
-    if found:
-        return found.group(1)
-    return None
+    return found.group(1) if found else None
 
+# Get transcript
 def get_video_transcript(video_id: str) -> list | None:
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        return transcript
     except TranscriptsDisabled:
         return None
-    return transcript
 
-def format_timestamp(timestamp: float) -> str:
-    return str(round(timestamp))
+# Summarize transcript text
+def summarize_large_text(text_list: list, max_size: int) -> str:
+    summaries = ""
+    txts = chunk_large_text(text_list, max_size)
+    summaries = summaries.join(txts)
+    return summaries
 
-def shorten_text(text: str, max_length: int = 60) -> str:
-    if len(text) > max_length:
-        return text[:max_length] + "..."
-    return text
-
+# Chunk text for processing
 def chunk_large_text(text_list: list, max_size: int) -> list[str]:
     txts = []
     para = ''
@@ -83,12 +83,7 @@ def chunk_large_text(text_list: list, max_size: int) -> list[str]:
         txts.append(para)
     return txts
 
-def summarize_large_text(text_list: list, max_size: int) -> str:
-    summaries = ""
-    txts = chunk_large_text(text_list, max_size)
-    summaries = summaries.join(txts)
-    return summaries
-
+# Caption and tags generation
 def generate_caption_and_tags(summary: str) -> tuple:
     model = configure_watsonx()
     
@@ -100,31 +95,21 @@ def generate_caption_and_tags(summary: str) -> tuple:
     viral_tags_response = model.generate(viral_tags_prompt)
     viral_tags = viral_tags_response.get('results')[0]['generated_text']
 
-    famous_tags_prompt = f"Suggest famous people in the relevant field to tag based on this content: {summary}"
+    famous_tags_prompt = f"Suggest the top five famous people in the relevant field to tag based on this content: {summary}"
     famous_tags_response = model.generate(famous_tags_prompt)
     famous_tags = famous_tags_response.get('results')[0]['generated_text']
 
     return caption, viral_tags, famous_tags
 
-def format_interval(start, end):
-    start_min = int(start // 60)
-    start_sec = int(start % 60)
-    end_min = int(end // 60)
-    end_sec = int(end % 60)
-    return f"{start_min:02}:{start_sec:02} - {end_min:02}:{end_sec:02}"
-
-def display_transcript(transcript):
-    transcript_text = ""
-    for entry in transcript:
-        formatted_interval = format_interval(entry['start'], entry['start'] + entry['duration'])
-        shortened_text = shorten_text(entry['text'])
-        transcript_text += f"{formatted_interval}: {shortened_text}\n\n"
-    
-    # Display the entire transcript with time frames
-    st.text_area("Video Transcript with Time Frames", transcript_text, height=500)
+# Display transcript as paragraphs
+def display_transcript_clean(transcript):
+    clean_text = " ".join([entry['text'] for entry in transcript])
+    segmented_sentences = seg.segment(clean_text)
+    paragraphs = "\n\n".join(segmented_sentences)
+    st.text_area("Video Transcript (Formatted)", paragraphs, height=500)
 
 # Streamlit UI
-st.title('Video Content Summarization to Suggest Captions, Hashtags, and Tag Relevant People Using Watsonx Mistral 7B')
+st.title('Video Content Summarization for Captions, Hashtags, and Tags')
 
 st.write("### Instructions:")
 st.markdown(
@@ -156,9 +141,9 @@ if submit and url:
                 st.subheader('Viral Hashtags')
                 st.write(viral_tags)
 
-            # Display video transcript with time frames at the end
-            st.subheader("Video Transcript with Time Frames")
-            display_transcript(transcript)
+            # Display video transcript without timestamps
+            st.subheader("Video Transcript")
+            display_transcript_clean(transcript)
         else:
             st.write("No transcript found for this video.")
     else:
