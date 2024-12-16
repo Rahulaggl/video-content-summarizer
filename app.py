@@ -14,9 +14,9 @@ dotenv.load_dotenv()
 def configure_watsonx():
     credentials = {
         "url": "https://us-south.ml.cloud.ibm.com",
-        "apikey": os.getenv("WATSONX_API_KEY")
+        "apikey": "SyTemgb0snr-M_eeqwcUdfBFfLyQbdhds5vFhIFdATZl"
     }
-    project_id = os.getenv("PROJECT_ID")
+    project_id = "4416dc15-0387-4925-976a-46972c256867"
     model_id = "mistralai/mixtral-8x7b-instruct-v01"
 
     parameters = {
