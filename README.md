@@ -14,7 +14,7 @@ Here is the updated GitHub description with the link placed at the top:
 Here is the demo video:
 
 <video width="600" controls>
-  <source src="https://raw.githubusercontent.com/Rahulaggl/video-content-summarizer/refs/heads/main/Assignment_video.mp4">
+  <source src="https://youtu.be/-olEfVXiUik">
   Your browser does not support the video tag.
 </video>
 
