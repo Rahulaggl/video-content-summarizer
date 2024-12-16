@@ -4,11 +4,21 @@ Here is the updated GitHub description with the link placed at the top:
 
 **Access the Project:**
 
-1. **Online Access**:  
-   You can access the project online via the following [link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
-
-2. **Offline Access**:  
+1. **Offline Access**:  
    To run the project locally, follow the setup instructions below.
+   
+3. **Online Access**:  
+   You can access the project online via the following [link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
+## Demo
+
+Here is the demo video:
+
+<video width="600" controls>
+  <source src="https://raw.githubusercontent.com/Rahulaggl/video-content-summarizer/refs/heads/main/Assignment_video.mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 
 ---
 
