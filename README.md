@@ -9,7 +9,7 @@ Here is the updated GitHub description with the link placed at the top:
    
 3. **Online Access**:  
    You can access the project online via the following [link](https://video-content-summarizer-wjrvaipdu8jc9v4zzgc4so.streamlit.app/).
-## Demo
+## Demo Video
 
 Here is the demo video:[link](https://youtu.be/-olEfVXiUik).
 
