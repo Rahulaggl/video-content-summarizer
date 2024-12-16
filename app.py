@@ -114,7 +114,7 @@ st.title('Video Content Summarization for Captions, Hashtags, and Tags')
 st.write("### Instructions:")
 st.markdown(
     "1. Upload your video to [YouTube](https://www.youtube.com).\n"
-    "2. Set the video visibility to **Private**.\n"
+    "2. Set the video visibility to **Unlisted**.\n"
     "3. Copy the video link and paste it below to generate captions, hashtags, and suggestions."
 )
 
