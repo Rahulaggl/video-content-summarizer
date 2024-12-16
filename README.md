@@ -104,8 +104,3 @@ To Contribute:
     Make your changes in a feature branch.
     Submit a pull request with proper documentation.
 
-License
-
-This project is licensed under the MIT License.
-
-Let me know if you'd like any adjustments or additional sections! 🚀
